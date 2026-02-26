@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.zip
+temp_*.html
+*.log
+test_images.json
+test_image_fetch.js
+test_capture.js
+ready_to_post_zips/

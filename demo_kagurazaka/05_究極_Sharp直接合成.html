@@ -1,0 +1,45 @@
+
+    <html><head><style>
+        body { margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; }
+        .slide { width: 1080px; height: 1350px; position: relative; overflow: hidden; border-radius: 30px; box-shadow: 0 50px 150px rgba(0,0,0,0.5); background: transparent; }
+        .bg-layer { position: absolute; inset: 0; width: 100%; height: 100%; }
+        .overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 35%, rgba(0,0,0,0.95) 80%); }
+        .ui-layer { position: absolute; inset: 0; z-index: 10; padding: 50px; color:#fff; display: flex; flex-direction: column; justify-content: flex-end;}
+        .store-num { background: rgba(255,45,85,0.9); padding: 5px 25px; border-radius: 30px; font-size: 22.5px; font-weight: 800; display: inline-block; margin-bottom: 10px; }
+        .store-label { font-size: 60px; font-weight: 900; line-height: 1.2; text-shadow: 0 5px 20px rgba(0,0,0,0.9); margin-bottom: 25px; }
+        .bottom-area { padding-bottom: 125px; padding-left: 25px; }
+        .merit { color: #5eead4; font-size: 27.5px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; text-shadow: 0px 2px 4px rgba(0,0,0,0.8); }
+        .merit::before { content: "✓"; background: #5eead4; color: #000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22.5px; }
+        .card { position:absolute; top:40px; right:40px; width:300px; height:350px; background:#fff; border-radius:25px; overflow:hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.4); transform: rotate(2deg); }
+        .card img { width:100%; height:60%; object-fit:cover; }
+        .card-text { padding:20px; color:#000; }
+        .card-name { font-size:20px; font-weight:900; }
+        .card-rating { font-size:17.5px; color:#fbbc04; margin-top:5px; font-weight:bold; }
+    </style></head>
+    <body style="background:transparent;">
+        <div class="slide" id="slide" style="background:transparent; box-shadow:none;">
+            
+            <div class="overlay"></div>
+            <div class="ui-layer">
+                <div style="position:absolute; top:40px; left:40px;">
+                    <div class="store-num">焼肉 #1</div>
+                    <div class="store-label">神楽坂<br>焼肉 KAZU</div>
+                </div>
+                
+                <div class="card">
+                    <img src="file:///C:/Users/taiyo　imamoto/Desktop/getmoney/demo_kagurazaka/kazu_bg.jpg">
+                    <div class="card-text">
+                        <div class="card-name">神楽坂 KAZU</div>
+                        <div class="card-rating">★★★★☆ 4.8</div>
+                    </div>
+                </div>
+
+                <div class="bottom-area">
+                    <div class="merit">極上の黒毛和牛が堪能できる</div>
+                    <div class="merit">神楽坂の隠れ家的な落ち着いた空間</div>
+                    <div class="merit">記念日デートに最適な完全個室あり</div>
+                </div>
+            </div>
+        </div>
+    </body></html>
+    

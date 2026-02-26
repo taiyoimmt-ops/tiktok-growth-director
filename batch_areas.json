@@ -1,0 +1,437 @@
+{
+    "batch_id": "BATCH-002",
+    "created": "2026-02-26T01:12:00+09:00",
+    "status": "processing",
+    "areas": [
+        {
+            "id": "002",
+            "area": "浅草",
+            "title": "デートにおすすめ浅草の穴場6選",
+            "folder": "002_asakusa_gourmet",
+            "landmark": "浅草寺 雷門",
+            "landmark_search": "浅草寺 雷門",
+            "category_focus": "グルメ・食べ歩き",
+            "spots": [
+                {
+                    "name": "フルーツパーラーゴトー",
+                    "search": "フルーツパーラーゴトー 浅草",
+                    "category": "スイーツ",
+                    "rating": 4.3,
+                    "reviews": 800,
+                    "price": "¥1,000〜¥2,000",
+                    "merits": [
+                        "季節のパフェが絶品",
+                        "昔ながらの老舗感",
+                        "フルーツの鮮度が段違い"
+                    ],
+                    "demerit": "行列必至",
+                    "secret": "平日14時以降が穴場の時間帯"
+                },
+                {
+                    "name": "ペリカンカフェ",
+                    "search": "ペリカンカフェ 浅草",
+                    "category": "カフェ",
+                    "rating": 4.2,
+                    "reviews": 450,
+                    "price": "¥1,000〜¥2,000",
+                    "merits": [
+                        "創業77年のパン屋カフェ",
+                        "トーストが究極に美味い",
+                        "レトロな雰囲気"
+                    ],
+                    "demerit": "メニューが少なめ",
+                    "secret": "パンは隣のパン屋で買えるけどカフェ限定メニューあり"
+                },
+                {
+                    "name": "つくし",
+                    "search": "つくし 浅草 とんかつ",
+                    "category": "とんかつ",
+                    "rating": 4.5,
+                    "reviews": 200,
+                    "price": "¥1,000〜¥2,000",
+                    "merits": [
+                        "地元民が通うとんかつ屋",
+                        "コスパ最強ランチ",
+                        "観光客少なめの穴場"
+                    ],
+                    "demerit": "ランチタイムは並ぶ",
+                    "secret": "実はメンチカツの方が人気。常連は必ず頼む"
+                },
+                {
+                    "name": "浅草メンチ",
+                    "search": "浅草メンチ",
+                    "category": "食べ歩き",
+                    "rating": 4.0,
+                    "reviews": 1200,
+                    "price": "〜¥500",
+                    "merits": [
+                        "テレビで話題の揚げたてメンチ",
+                        "食べ歩きの王道",
+                        "ワンコインで大満足"
+                    ],
+                    "demerit": "油っぽいと感じる人も",
+                    "secret": "揚げたて30秒以内に食べるのが通の食べ方"
+                },
+                {
+                    "name": "珈琲天国",
+                    "search": "珈琲天国 浅草",
+                    "category": "カフェ",
+                    "rating": 4.3,
+                    "reviews": 500,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "ホットケーキが映えすぎ",
+                        "天国の焼印が可愛い",
+                        "昭和レトロな純喫茶"
+                    ],
+                    "demerit": "席数が少ない",
+                    "secret": "ホットケーキは焼くのに15分。先にオーダーが命"
+                }
+            ]
+        },
+        {
+            "id": "003",
+            "area": "下北沢",
+            "title": "デートにおすすめ下北沢の穴場5選",
+            "folder": "003_shimokitazawa_cafe",
+            "landmark": "下北沢駅前",
+            "landmark_search": "下北沢駅",
+            "category_focus": "カフェ・古着",
+            "spots": [
+                {
+                    "name": "CITY COUNTRY CITY",
+                    "search": "CITY COUNTRY CITY 下北沢",
+                    "category": "カフェ",
+                    "rating": 4.4,
+                    "reviews": 300,
+                    "price": "¥1,000〜¥2,000",
+                    "merits": [
+                        "村上春樹が通ったカフェ",
+                        "ジャズが流れるレトロ空間",
+                        "2階席が最高に落ち着く"
+                    ],
+                    "demerit": "場所がわかりにくい",
+                    "secret": "村上春樹のサイン色紙が飾ってある"
+                },
+                {
+                    "name": "BONUS TRACK COFFEE",
+                    "search": "BONUS TRACK 下北沢",
+                    "category": "カフェ",
+                    "rating": 4.3,
+                    "reviews": 250,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "再開発エリアの新スポット",
+                        "テラス席がおしゃれ",
+                        "周辺の古着屋巡りと相性◎"
+                    ],
+                    "demerit": "天気が悪いと微妙",
+                    "secret": "隣のBOOKSHOP TRAVELLERと合わせて行くのが正解"
+                },
+                {
+                    "name": "ミカヅキカリー",
+                    "search": "ミカヅキカリー 下北沢",
+                    "category": "カレー",
+                    "rating": 4.2,
+                    "reviews": 350,
+                    "price": "¥1,000〜¥2,000",
+                    "merits": [
+                        "スパイスカレーの名店",
+                        "盛り付けが映え",
+                        "下北の食文化を体現"
+                    ],
+                    "demerit": "辛いのが苦手な人は注意",
+                    "secret": "限定カレーは月替わり。SNSでチェック必須"
+                },
+                {
+                    "name": "buns of cinnamon",
+                    "search": "buns of cinnamon 下北沢",
+                    "category": "スイーツ",
+                    "rating": 4.5,
+                    "reviews": 150,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "シナモンロール専門店",
+                        "焼きたてのふわふわ感",
+                        "テイクアウトもOK"
+                    ],
+                    "demerit": "売り切れが早い",
+                    "secret": "オープン直後の焼きたてが神。午前中が勝負"
+                },
+                {
+                    "name": "古着屋 FLAMINGO",
+                    "search": "FLAMINGO 下北沢 古着",
+                    "category": "古着",
+                    "rating": 4.3,
+                    "reviews": 200,
+                    "price": "¥1,000〜¥5,000",
+                    "merits": [
+                        "下北古着の代表格",
+                        "品揃えが圧倒的",
+                        "スタッフのセンスが光る"
+                    ],
+                    "demerit": "休日は混む",
+                    "secret": "入荷日は金曜が多い。金曜夕方が狙い目"
+                }
+            ]
+        },
+        {
+            "id": "004",
+            "area": "中目黒",
+            "title": "デートにおすすめ中目黒の穴場5選",
+            "folder": "004_nakameguro_date",
+            "landmark": "中目黒 目黒川",
+            "landmark_search": "目黒川 中目黒",
+            "category_focus": "大人デート",
+            "spots": [
+                {
+                    "name": "ONIBUS COFFEE 中目黒",
+                    "search": "ONIBUS COFFEE 中目黒",
+                    "category": "カフェ",
+                    "rating": 4.4,
+                    "reviews": 600,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "スペシャルティコーヒーの名店",
+                        "川沿いのテラス",
+                        "おしゃれ度MAX"
+                    ],
+                    "demerit": "席が少ない",
+                    "secret": "2階のルーフトップ席が最強のデートスポット"
+                },
+                {
+                    "name": "トラヴォリーノ",
+                    "search": "トラヴォリーノ 中目黒",
+                    "category": "イタリアン",
+                    "rating": 4.3,
+                    "reviews": 400,
+                    "price": "¥2,000〜¥3,000",
+                    "merits": [
+                        "本格ピッツァが絶品",
+                        "カジュアルで入りやすい",
+                        "デートにちょうどいい雰囲気"
+                    ],
+                    "demerit": "予約推奨",
+                    "secret": "テラス席で目黒川を見ながらピッツァは最高"
+                },
+                {
+                    "name": "SIDEWALK STAND",
+                    "search": "SIDEWALK STAND 中目黒",
+                    "category": "カフェ",
+                    "rating": 4.2,
+                    "reviews": 250,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "コーヒースタンドの先駆け",
+                        "テイクアウトしながら散歩",
+                        "地元のクリエイターが集まる"
+                    ],
+                    "demerit": "イートインスペースが狭い",
+                    "secret": "散歩しながらのテイクアウトが中目黒らしい過ごし方"
+                },
+                {
+                    "name": "焼肉チャンピオン 中目黒",
+                    "search": "焼肉チャンピオン 中目黒",
+                    "category": "焼肉",
+                    "rating": 4.4,
+                    "reviews": 350,
+                    "price": "¥3,000〜¥5,000",
+                    "merits": [
+                        "A5ランク黒毛和牛",
+                        "デートに使える焼肉",
+                        "個室あり"
+                    ],
+                    "demerit": "予算は高め",
+                    "secret": "ランチタイムなら半額近くで食べれる裏技あり"
+                },
+                {
+                    "name": "PEANUTS Cafe",
+                    "search": "PEANUTS Cafe 中目黒",
+                    "category": "カフェ",
+                    "rating": 4.2,
+                    "reviews": 500,
+                    "price": "¥1,000〜¥2,000",
+                    "merits": [
+                        "スヌーピー公式カフェ",
+                        "インテリアが可愛すぎ",
+                        "限定グッズも買える"
+                    ],
+                    "demerit": "混みやすい",
+                    "secret": "予約なしでも平日15時以降は入りやすい"
+                }
+            ]
+        },
+        {
+            "id": "005",
+            "area": "横浜",
+            "title": "デートにおすすめ横浜の穴場5選",
+            "folder": "005_yokohama_date",
+            "landmark": "横浜 赤レンガ倉庫",
+            "landmark_search": "横浜赤レンガ倉庫",
+            "category_focus": "港町デート",
+            "spots": [
+                {
+                    "name": "MARINE & WALK YOKOHAMA",
+                    "search": "MARINE AND WALK YOKOHAMA",
+                    "category": "ショッピング",
+                    "rating": 4.2,
+                    "reviews": 800,
+                    "price": "¥1,000〜¥3,000",
+                    "merits": [
+                        "海沿いのおしゃれモール",
+                        "写真映えスポット多数",
+                        "赤レンガから徒歩3分"
+                    ],
+                    "demerit": "飲食店は混む",
+                    "secret": "2階テラスからの海の眺めが穴場の撮影スポット"
+                },
+                {
+                    "name": "Bills 横浜赤レンガ倉庫",
+                    "search": "Bills 横浜赤レンガ倉庫",
+                    "category": "カフェ",
+                    "rating": 4.1,
+                    "reviews": 700,
+                    "price": "¥2,000〜¥3,000",
+                    "merits": [
+                        "世界一の朝食パンケーキ",
+                        "海が見えるテラス",
+                        "デートの定番"
+                    ],
+                    "demerit": "混雑・待ち時間あり",
+                    "secret": "予約不可だけど平日10時オープン直後なら即入れる"
+                },
+                {
+                    "name": "象の鼻テラス",
+                    "search": "象の鼻テラス 横浜",
+                    "category": "カフェ",
+                    "rating": 4.0,
+                    "reviews": 300,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "港が見える無料休憩スポット",
+                        "アート展示もある",
+                        "みなとみらいの夜景"
+                    ],
+                    "demerit": "カフェメニューは少なめ",
+                    "secret": "夕暮れ時のマジックアワーが最高の撮影タイム"
+                },
+                {
+                    "name": "スターバックス 横浜ベイクォーター",
+                    "search": "スターバックス 横浜ベイクォーター店",
+                    "category": "カフェ",
+                    "rating": 4.3,
+                    "reviews": 400,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "海に面したスタバ",
+                        "テラス席から大さん橋",
+                        "横浜で一番ロケーションが良いスタバ"
+                    ],
+                    "demerit": "テラス席は争奪戦",
+                    "secret": "雨の日は空いてる。窓際でも十分綺麗"
+                },
+                {
+                    "name": "中華街 萬珍樓",
+                    "search": "萬珍樓 横浜中華街",
+                    "category": "中華",
+                    "rating": 4.2,
+                    "reviews": 900,
+                    "price": "¥3,000〜¥5,000",
+                    "merits": [
+                        "中華街の老舗本格中華",
+                        "飲茶ランチがコスパ◎",
+                        "デートにも使える上品さ"
+                    ],
+                    "demerit": "予算は高め",
+                    "secret": "ランチの飲茶コースは予算内でフルコース体験"
+                }
+            ]
+        },
+        {
+            "id": "006",
+            "area": "吉祥寺",
+            "title": "デートにおすすめ吉祥寺の穴場5選",
+            "folder": "006_kichijoji_cafe",
+            "landmark": "井の頭公園",
+            "landmark_search": "井の頭恩賜公園",
+            "category_focus": "カフェ散歩",
+            "spots": [
+                {
+                    "name": "LIGHT UP COFFEE",
+                    "search": "LIGHT UP COFFEE 吉祥寺",
+                    "category": "カフェ",
+                    "rating": 4.5,
+                    "reviews": 350,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "スペシャルティコーヒー専門",
+                        "浅煎りの美味さに衝撃",
+                        "コーヒー初心者にも優しい"
+                    ],
+                    "demerit": "席が少ない",
+                    "secret": "ドリップコーヒーの飲み比べセットで覚醒する"
+                },
+                {
+                    "name": "ハモニカキッチン",
+                    "search": "ハモニカキッチン 吉祥寺",
+                    "category": "カフェ",
+                    "rating": 4.2,
+                    "reviews": 280,
+                    "price": "¥1,000〜¥2,000",
+                    "merits": [
+                        "ハモニカ横丁の隠れ家",
+                        "手作りケーキが絶品",
+                        "レトロな雰囲気"
+                    ],
+                    "demerit": "わかりにくい場所",
+                    "secret": "ハモニカ横丁の奥。地元民しか知らない入口"
+                },
+                {
+                    "name": "小ざさ",
+                    "search": "小ざさ 吉祥寺",
+                    "category": "スイーツ",
+                    "rating": 4.6,
+                    "reviews": 500,
+                    "price": "〜¥500",
+                    "merits": [
+                        "伝説の羊羹屋",
+                        "1日150本限定",
+                        "東京で最も入手困難な和菓子"
+                    ],
+                    "demerit": "早朝から並ぶ必要あり",
+                    "secret": "実はもなかなら並ばずに買える。味は同レベル"
+                },
+                {
+                    "name": "いせや 公園店",
+                    "search": "いせや 公園店 吉祥寺",
+                    "category": "居酒屋",
+                    "rating": 4.0,
+                    "reviews": 600,
+                    "price": "〜¥1,000",
+                    "merits": [
+                        "焼き鳥1本90円の伝説",
+                        "昭和からの老舗",
+                        "井の頭公園のすぐ隣"
+                    ],
+                    "demerit": "煙がすごい",
+                    "secret": "晴れの日は外のベンチで食べるのが最高"
+                },
+                {
+                    "name": "MARGARET HOWELL SHOP & CAFE",
+                    "search": "MARGARET HOWELL CAFE 吉祥寺",
+                    "category": "カフェ",
+                    "rating": 4.3,
+                    "reviews": 200,
+                    "price": "¥1,000〜¥2,000",
+                    "merits": [
+                        "ファッションブランドのカフェ",
+                        "洗練された空間",
+                        "ケーキセットが上品"
+                    ],
+                    "demerit": "価格は少し高め",
+                    "secret": "2階のショップと合わせて、大人のデートコースに"
+                }
+            ]
+        }
+    ]
+}

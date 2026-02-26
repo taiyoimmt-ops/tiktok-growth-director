@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Growth Hacker | コンテンツ量産ダッシュボード</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18V5l12-2v13" />
+                    <circle cx="6" cy="18" r="3" />
+                    <circle cx="18" cy="16" r="3" />
+                </svg>
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">TikTok</span>
+                <span class="brand-sub">Growth Hacker</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                </svg>
+                <span>ダッシュボード</span>
+            </a>
+            <a href="#" class="nav-item" data-section="research">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <span>リサーチ</span>
+            </a>
+            <a href="#" class="nav-item" data-section="generator">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <polyline points="21 15 16 10 5 21" />
+                </svg>
+                <span>画像生成</span>
+            </a>
+            <a href="#" class="nav-item" data-section="caption">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                <span>キャプション</span>
+            </a>
+            <a href="#" class="nav-item" data-section="analytics">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+                <span>分析</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-stats">
+            <div class="stat-card-mini">
+                <span class="stat-label">目標</span>
+                <span class="stat-value">10,000</span>
+                <span class="stat-unit">フォロワー</span>
+            </div>
+            <div class="stat-card-mini">
+                <span class="stat-label">残り</span>
+                <span class="stat-value" id="daysLeft">30</span>
+                <span class="stat-unit">日</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-content">
+        <!-- HEADER -->
+        <header class="main-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <h1 class="page-title" id="pageTitle">ダッシュボード</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" placeholder="エリアを検索...">
+                </div>
+                <div class="notification-bell">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                    <span class="badge">3</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== DASHBOARD SECTION ========== -->
+        <section class="content-section active" id="section-dashboard">
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card kpi-gradient-1">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <div class="kpi-data">
+                        <span class="kpi-value" id="kpiFollowers">0</span>
+                        <span class="kpi-label">現在のフォロワー</span>
+                        <span class="kpi-change positive">+0% 今週</span>
+                    </div>
+                </div>
+                <div class="kpi-card kpi-gradient-2">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <div class="kpi-data">
+                        <span class="kpi-value" id="kpiSaves">0</span>
+                        <span class="kpi-label">総保存数</span>
+                        <span class="kpi-change positive">+0% 今週</span>
+                    </div>
+                </div>
+                <div class="kpi-card kpi-gradient-3">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                        </svg>
+                    </div>
+                    <div class="kpi-data">
+                        <span class="kpi-value" id="kpiPosts">0</span>
+                        <span class="kpi-label">投稿数</span>
+                        <span class="kpi-change neutral">今月</span>
+                    </div>
+                </div>
+                <div class="kpi-card kpi-gradient-4">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                            <polyline points="17 6 23 6 23 12" />
+                        </svg>
+                    </div>
+                    <div class="kpi-data">
+                        <span class="kpi-value" id="kpiEngagement">0%</span>
+                        <span class="kpi-label">エンゲージメント率</span>
+                        <span class="kpi-change positive">目標: 8%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Area Quick Launch -->
+            <div class="section-block">
+                <div class="block-header">
+                    <h2>🔥 エリアクイックラウンチ</h2>
+                    <p>リサーチしたいエリアを選択して、コンテンツ生成パイプラインを起動</p>
+                </div>
+                <div class="area-grid" id="areaGrid">
+                    <button class="area-card" data-area="箱根" onclick="startResearch('箱根')">
+                        <div class="area-emoji">♨️</div>
+                        <span class="area-name">箱根</span>
+                        <span class="area-tag">温泉・リゾート</span>
+                    </button>
+                    <button class="area-card" data-area="京都" onclick="startResearch('京都')">
+                        <div class="area-emoji">⛩️</div>
+                        <span class="area-name">京都</span>
+                        <span class="area-tag">古都・文化</span>
+                    </button>
+                    <button class="area-card" data-area="浅草" onclick="startResearch('浅草')">
+                        <div class="area-emoji">🏮</div>
+                        <span class="area-name">浅草</span>
+                        <span class="area-tag">下町・グルメ</span>
+                    </button>
+                    <button class="area-card" data-area="鎌倉" onclick="startResearch('鎌倉')">
+                        <div class="area-emoji">🌊</div>
+                        <span class="area-name">鎌倉</span>
+                        <span class="area-tag">海・古刹</span>
+                    </button>
+                    <button class="area-card" data-area="渋谷" onclick="startResearch('渋谷')">
+                        <div class="area-emoji">🌃</div>
+                        <span class="area-name">渋谷</span>
+                        <span class="area-tag">トレンド・夜景</span>
+                    </button>
+                    <button class="area-card" data-area="横浜" onclick="startResearch('横浜')">
+                        <div class="area-emoji">🚢</div>
+                        <span class="area-name">横浜</span>
+                        <span class="area-tag">港町・デート</span>
+                    </button>
+                    <button class="area-card area-card-custom" onclick="showCustomArea()">
+                        <div class="area-emoji">➕</div>
+                        <span class="area-name">カスタム</span>
+                        <span class="area-tag">エリアを追加</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="section-block">
+                <div class="block-header">
+                    <h2>📊 コンテンツパイプライン</h2>
+                    <p>生成フローの進捗状況</p>
+                </div>
+                <div class="pipeline-timeline" id="pipelineTimeline">
+                    <div class="pipeline-empty">
+                        <div class="empty-icon">🚀</div>
+                        <p>エリアを選択してリサーチを開始しましょう</p>
+                        <p class="empty-sub">上のエリアカードをクリックするか、検索ボックスにエリア名を入力</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== RESEARCH SECTION ========== -->
+        <section class="content-section" id="section-research">
+            <div class="section-block">
+                <div class="block-header">
+                    <h2>🔍 トレンド・ディープリサーチ</h2>
+                    <p>TikTok/Instagram保存数急増ワードを抽出 & Googleマップスポット特定</p>
+                </div>
+
+                <div class="research-controls">
+                    <div class="input-group">
+                        <label>対象エリア</label>
+                        <input type="text" id="researchArea" placeholder="例：箱根、京都、浅草..." class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label>ターゲット層</label>
+                        <select class="input-field" id="targetAge">
+                            <option value="18-25">18〜25歳（大学生・新社会人）</option>
+                            <option value="25-35">25〜35歳（社会人）</option>
+                            <option value="all">全年齢</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>カテゴリ</label>
+                        <select class="input-field" id="category">
+                            <option value="all">すべて</option>
+                            <option value="hotel">ホテル・旅館</option>
+                            <option value="restaurant">飲食店</option>
+                            <option value="cafe">カフェ</option>
+                            <option value="spot">観光スポット</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary" id="btnStartResearch" onclick="executeResearch()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                        リサーチ開始
+                    </button>
+                </div>
+
+                <!-- Research Results -->
+                <div class="research-results" id="researchResults" style="display:none;">
+                    <div class="results-header">
+                        <h3>📍 発見されたスポット</h3>
+                        <div class="results-actions">
+                            <button class="btn-secondary" onclick="exportToSheets()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                </svg>
+                                Sheetsに出力
+                            </button>
+                            <button class="btn-primary" onclick="generateImages()">
+                                画像生成へ →
+                            </button>
+                        </div>
+                    </div>
+                    <div class="spots-grid" id="spotsGrid">
+                        <!-- Spots will be dynamically inserted -->
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div class="research-loading" id="researchLoading" style="display:none;">
+                    <div class="loader-ring"></div>
+                    <p class="loading-text">ディープリサーチ中...</p>
+                    <div class="loading-steps" id="loadingSteps">
+                        <div class="step active">
+                            <span class="step-dot"></span>
+                            <span>TikTokトレンドワード分析</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-dot"></span>
+                            <span>Googleマップスポット抽出</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-dot"></span>
+                            <span>口コミ・レビュー解析</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-dot"></span>
+                            <span>競合分析・裏情報抽出</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== GENERATOR SECTION ========== -->
+        <section class="content-section" id="section-generator">
+            <div class="section-block">
+                <div class="block-header">
+                    <h2>🎨 画像生成エンジン</h2>
+                    <p>TikTokフォトモード（1080×1350）に最適化された10枚構成を自動生成</p>
+                </div>
+
+                <div class="generator-layout">
+                    <!-- Slide Preview -->
+                    <div class="slide-preview-container">
+                        <div class="slide-preview" id="slidePreview">
+                            <div class="slide-mockup">
+                                <div class="mockup-screen">
+                                    <div class="mockup-placeholder">
+                                        <div class="placeholder-icon">📸</div>
+                                        <p>リサーチ完了後、ここにプレビューが表示されます</p>
+                                    </div>
+                                </div>
+                                <div class="slide-nav-dots">
+                                    <span class="dot active"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-controls">
+                            <button class="btn-icon" id="prevSlide">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15 18 9 12 15 6" />
+                                </svg>
+                            </button>
+                            <span class="slide-counter"><span id="currentSlide">1</span> / <span
+                                    id="totalSlides">10</span></span>
+                            <button class="btn-icon" id="nextSlide">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Slide Config -->
+                    <div class="slide-config">
+                        <h3>スライド構成</h3>
+                        <div class="slide-list" id="slideList">
+                            <div class="slide-item active" data-slide="1">
+                                <span class="slide-num">01</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">表紙</span>
+                                    <span class="slide-desc">強烈なキャッチコピー + コラージュ</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="2">
+                                <span class="slide-num">02</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">スポット詳細 #1</span>
+                                    <span class="slide-desc">写真・評価・価格・メリット</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="3">
+                                <span class="slide-num">03</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">スポット詳細 #2</span>
+                                    <span class="slide-desc">写真・評価・価格・メリット</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="4">
+                                <span class="slide-num">04</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">スポット詳細 #3</span>
+                                    <span class="slide-desc">写真・評価・価格・メリット</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="5">
+                                <span class="slide-num">05</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">スポット詳細 #4</span>
+                                    <span class="slide-desc">写真・評価・価格・メリット</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="6">
+                                <span class="slide-num">06</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">スポット詳細 #5</span>
+                                    <span class="slide-desc">写真・評価・価格・メリット</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="7">
+                                <span class="slide-num">07</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">比較表</span>
+                                    <span class="slide-desc">5店舗マトリックス図</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="8">
+                                <span class="slide-num">08</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">周辺マップ</span>
+                                    <span class="slide-desc">寄り道ルート可視化</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="9">
+                                <span class="slide-num">09</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">まとめ</span>
+                                    <span class="slide-desc">保存誘導CTA</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                            <div class="slide-item" data-slide="10">
+                                <span class="slide-num">10</span>
+                                <div class="slide-info">
+                                    <span class="slide-type">CTA</span>
+                                    <span class="slide-desc">プロフィール誘導</span>
+                                </div>
+                                <span class="slide-status pending">待機中</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary btn-full" id="btnGenerate" onclick="generateAllSlides()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg>
+                            全スライド一括生成
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CAPTION SECTION ========== -->
+        <section class="content-section" id="section-caption">
+            <div class="section-block">
+                <div class="block-header">
+                    <h2>✍️ アルゴリズム最適化キャプション</h2>
+                    <p>TikTok SEO対応 1000文字キャプション + 議論トリガー + トレンドBGM</p>
+                </div>
+
+                <div class="caption-layout">
+                    <div class="caption-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn active" data-style="seo">SEO最適化</button>
+                            <button class="toolbar-btn" data-style="viral">バイラル重視</button>
+                            <button class="toolbar-btn" data-style="engagement">エンゲージ重視</button>
+                        </div>
+                        <textarea id="captionText" class="caption-textarea"
+                            placeholder="リサーチ完了後、自動生成されたキャプションがここに表示されます..."></textarea>
+                        <div class="caption-meta">
+                            <span class="char-count"><span id="charCount">0</span> / 1000文字</span>
+                            <div class="caption-actions">
+                                <button class="btn-secondary btn-sm" onclick="regenerateCaption()">再生成</button>
+                                <button class="btn-primary btn-sm" onclick="copyCaption()">コピー</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="caption-sidebar">
+                        <!-- Trigger Card -->
+                        <div class="info-card">
+                            <h4>🔥 議論トリガー</h4>
+                            <div class="trigger-content" id="triggerContent">
+                                <p class="placeholder-text">リサーチ後に自動生成されます</p>
+                            </div>
+                        </div>
+
+                        <!-- BGM Suggestions -->
+                        <div class="info-card">
+                            <h4>🎵 トレンドBGM提案</h4>
+                            <div class="bgm-list" id="bgmList">
+                                <div class="bgm-item placeholder">
+                                    <span class="bgm-rank">1</span>
+                                    <div class="bgm-info">
+                                        <span class="bgm-name">リサーチ完了後に表示</span>
+                                        <span class="bgm-artist">--</span>
+                                    </div>
+                                </div>
+                                <div class="bgm-item placeholder">
+                                    <span class="bgm-rank">2</span>
+                                    <div class="bgm-info">
+                                        <span class="bgm-name">リサーチ完了後に表示</span>
+                                        <span class="bgm-artist">--</span>
+                                    </div>
+                                </div>
+                                <div class="bgm-item placeholder">
+                                    <span class="bgm-rank">3</span>
+                                    <div class="bgm-info">
+                                        <span class="bgm-name">リサーチ完了後に表示</span>
+                                        <span class="bgm-artist">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hashtag Suggestions -->
+                        <div class="info-card">
+                            <h4>#️⃣ 推奨ハッシュタグ</h4>
+                            <div class="hashtag-cloud" id="hashtagCloud">
+                                <span class="hashtag placeholder">#リサーチ待ち</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== ANALYTICS SECTION ========== -->
+        <section class="content-section" id="section-analytics">
+            <div class="section-block">
+                <div class="block-header">
+                    <h2>📈 成長分析</h2>
+                    <p>フォロワー増加トレンドと投稿パフォーマンス</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="chart-card">
+                        <h4>フォロワー成長曲線</h4>
+                        <div class="chart-area" id="growthChart">
+                            <canvas id="growthCanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h4>投稿別パフォーマンス</h4>
+                        <div class="chart-area" id="performanceChart">
+                            <canvas id="performanceCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-calendar">
+                    <h3>📅 コンテンツカレンダー</h3>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Calendar will be generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== MODALS ========== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="customAreaModal">
+            <div class="modal-header">
+                <h3>カスタムエリア追加</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label>エリア名</label>
+                    <input type="text" id="customAreaName" placeholder="例：熱海" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label>カテゴリタグ</label>
+                    <input type="text" id="customAreaTag" placeholder="例：温泉・海" class="input-field">
+                </div>
+                <div class="input-group">
+                    <label>絵文字</label>
+                    <input type="text" id="customAreaEmoji" placeholder="例：🏖️" class="input-field" maxlength="2">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">キャンセル</button>
+                <button class="btn-primary" onclick="addCustomArea()">追加してリサーチ開始</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Google Maps Screenshot Modal -->
+    <div class="screenshot-modal" id="screenshotModal">
+        <div class="screenshot-modal-content">
+            <div class="screenshot-modal-header">
+                <h3 id="screenshotTitle">Google Maps スクリーンショット</h3>
+                <button class="modal-close" onclick="closeScreenshotModal()">&times;</button>
+            </div>
+            <div class="screenshot-modal-body">
+                <img id="screenshotImage" src="" alt="Google Maps Screenshot">
+            </div>
+            <div class="screenshot-modal-footer">
+                <span class="screenshot-source">📍 出典: Google Maps 実地調査</span>
+                <span class="screenshot-verified">✅ データ検証済み</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="real_data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

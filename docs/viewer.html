@@ -1,51 +1,7 @@
-<!DOCTYPE html>
+`<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TikTokスライドビューア</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0f;color:#fff;font-family:-apple-system,system-ui,sans-serif;min-height:100vh}
-.header{background:linear-gradient(135deg,#1a0030,#0a0a0f);padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.1)}
-.header h1{font-size:16px;color:#25f4ee}
-.back{display:inline-block;color:#888;font-size:13px;margin-bottom:10px;text-decoration:none}
-.slides{padding:12px;display:flex;flex-direction:column;gap:10px}
-.slide-item{width:100%;border-radius:10px;overflow:hidden;position:relative}
-.slide-item img{width:100%;display:block}
-.slide-num{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);font-size:11px;padding:6px;text-align:center}
-.caption-section{padding:16px}
-.caption-title{font-size:13px;color:#25f4ee;margin-bottom:8px;font-weight:700}
-.caption-body{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px;font-size:12px;line-height:1.7;color:#ddd;white-space:pre-wrap;word-break:break-all}
-</style>
-</head>
-<body>
-<div class="header"><h1>📱 TikTokスライドビューア</h1></div>
-<div id="content" style="padding:16px"><p style="color:#888">読み込み中...</p></div>
-<script>
-const p = new URLSearchParams(location.search);
-const area = p.get('area') || '';
-const base = area ? area + '/' : '';
-fetch(base + 'caption.txt').then(r=>r.ok?r.text():null).catch(()=>null).then(caption => {
-    const imgs = [];
-    function tryNext(i) {
-        const n = String(i+1).padStart(2,'0');
-        const img = new Image();
-        img.onload = () => {
-            imgs.push({src: base+'slide_0'+n+'.png', i});
-            tryNext(i+1);
-        };
-        img.onerror = () => {
-            if(i===0) {
-                document.getElementById('content').innerHTML = '<p style="color:#888">スライドが見つかりません</p>';
-                return;
-            }
-            const slides = imgs.map((img,j)=>`<div class="slide-item"><img src="${img.src}" loading="lazy"><div class="slide-num">スライド ${j+1}/${imgs.length} · 長押し→写真に追加</div></div>`).join('');
-            const cap = caption ? `<div class="caption-section"><div class="caption-title">📝 キャプション（コピーして使用）</div><div class="caption-body">${caption.replace(/</g,'&lt;')}</div></div>` : '';
-            document.getElementById('content').innerHTML = `<a href="index.html" class="back">← 一覧に戻る</a><div class="slides">${slides}</div>${cap}`;
-        };
-        img.src = base + 'slide_0' + n + '.png';
-    }
-    tryNext(0);
-});
-</script>
-</body></html>
+*{margin:0

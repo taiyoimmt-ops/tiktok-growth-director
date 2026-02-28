@@ -185,7 +185,11 @@ fetch(base + 'caption.txt').then(r=>r.ok?r.text():null).catch(()=>null).then(cap
                 return;
             }
             const slides = imgs.map((img,j)=>\`<div class="slide-item"><img src="\${img.src}" loading="lazy"><div class="slide-num">スライド \${j+1}/\${imgs.length} · 長押し→写真に追加</div></div>\`).join('');
-            const cap = caption ? \`<div class="caption-section"><div class="caption-title">📝 キャプション（コピーして使用）</div><div class="caption-body">\${caption.replace(/</g,'&lt;')}</div></div>\` : '';
+            const cap = caption ? \`<div class="caption-section">
+                <div class="caption-title">📝 キャプション</div>
+                <div class="caption-body" id="capText">\${caption.replace(/</g,'&lt;')}</div>
+                <button onclick="navigator.clipboard.writeText(document.getElementById('capText').innerText).then(()=>alert('キャプションをコピーしました！'))" style="margin-top:12px;width:100%;padding:14px;background:linear-gradient(135deg,#25f4ee,#fe2c55);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:bold;cursor:pointer;box-shadow:0 4px 10px rgba(37,244,238,0.3);">📋 コピーする</button>
+            </div>\` : '';
             document.getElementById('content').innerHTML = \`<a href="index.html" class="back">← 一覧に戻る</a><div class="slides">\${slides}</div>\${cap}\`;
         };
         img.src = base + 'slide_' + n + '.png';

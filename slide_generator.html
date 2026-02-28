@@ -194,81 +194,53 @@
             color: #fff;
         }
 
-        /* ===== NEW TEMPLATE: Floating Google Maps Card Top-Right ===== */
-        .floating-card {
+        /* ===== NEW TEMPLATE: Text-Based Rating Badge (Google Maps Style) ===== */
+        .rating-badge {
             position: absolute;
-            top: 14px;
-            right: 14px;
+            top: 16px;
+            right: 16px;
             z-index: 20;
-            width: 120px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transform: rotate(2deg);
-            transition: transform 0.3s;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 8px 14px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            max-width: 140px;
         }
 
-        .floating-card:hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-
-        .floating-card img {
-            width: 100%;
-            height: 70px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .floating-card-info {
-            padding: 5px 7px 6px;
-        }
-
-        .floating-card-name {
-            font-size: 7px;
-            font-weight: 800;
-            color: #222;
-            line-height: 1.2;
-            margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .floating-card-rating {
+        .rating-badge-top {
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 6px;
         }
 
-        .floating-card-stars {
-            color: #fbbc04;
-            font-size: 8px;
+        .rating-badge .score {
+            color: #202124;
+            font-size: 22px;
+            font-weight: 900;
+            font-family: 'Arial', sans-serif;
+            line-height: 1;
         }
 
-        .floating-card-score {
-            font-size: 7px;
-            color: #555;
-            font-weight: 600;
+        .rating-badge .stars {
+            color: #fbbc05;
+            /* Google Maps Yellow */
+            font-size: 14px;
+            letter-spacing: -2px;
+            display: flex;
+            align-items: center;
         }
 
-        .floating-card-price {
-            font-size: 6.5px;
-            color: #888;
+        .rating-badge .reviews-text {
+            color: #70757a;
+            font-size: 9.5px;
+            font-weight: 700;
             margin-top: 1px;
-        }
-
-        .floating-card-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: #25f4ee;
-            color: #000;
-            font-size: 6px;
-            font-weight: 800;
-            padding: 2px 5px;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.2px;
         }
 
         /* ===== Bottom Info Bar ===== */
@@ -306,24 +278,29 @@
 
         .badge-price {
             background: rgba(37, 244, 238, 0.2);
+            backdrop-filter: blur(4px);
             color: #25f4ee;
             padding: 3px 10px;
             border-radius: 16px;
             font-size: 10px;
             font-weight: 700;
+            border: 1px solid rgba(37, 244, 238, 0.3);
         }
 
-        .badge-reviews {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.8);
+        .badge-category {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            color: rgba(255, 255, 255, 0.95);
             padding: 3px 10px;
             border-radius: 16px;
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .secret-box {
-            background: rgba(255, 45, 85, 0.12);
+            background: rgba(255, 45, 85, 0.15);
+            backdrop-filter: blur(8px);
             border-left: 3px solid #fe2c55;
             padding: 6px 10px;
             border-radius: 0 6px 6px 0;
@@ -337,7 +314,7 @@
 
         .secret-text {
             font-size: 9.5px;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.95);
             line-height: 1.4;
         }
 
@@ -427,58 +404,19 @@
 <body>
     <div class="controls">
         <h1>🎬 TikTok Slide v2</h1>
-        <p>鎌倉 穴場6選 - 新テンプレート</p>
+        <p>浅草 穴場5選 - テキスト評価版</p>
         <button class="slide-btn active" onclick="showSlide(0)"><span class="num">1</span> 表紙</button>
-        <button class="slide-btn" onclick="showSlide(1)"><span class="num">2</span> ディモンシュ</button>
-        <button class="slide-btn" onclick="showSlide(2)"><span class="num">3</span> 燕CAFE</button>
-        <button class="slide-btn" onclick="showSlide(3)"><span class="num">4</span> ユキノシタ</button>
-        <button class="slide-btn" onclick="showSlide(4)"><span class="num">5</span> かど屋</button>
-        <button class="slide-btn" onclick="showSlide(5)"><span class="num">6</span> アルビコッカ</button>
+        <button class="slide-btn" onclick="showSlide(1)"><span class="num">2</span> フルーツパーラー</button>
+        <button class="slide-btn" onclick="showSlide(2)"><span class="num">3</span> ペリカンカフェ</button>
+        <button class="slide-btn" onclick="showSlide(3)"><span class="num">4</span> つくし</button>
+        <button class="slide-btn" onclick="showSlide(4)"><span class="num">5</span> 浅草メンチ</button>
+        <button class="slide-btn" onclick="showSlide(5)"><span class="num">6</span> 珈琲天国</button>
         <button class="slide-btn" onclick="showSlide(6)"><span class="num">7</span> 📊 比較表</button>
         <button class="slide-btn" onclick="showSlide(7)"><span class="num">8</span> 🔖 保存</button>
         <button class="slide-btn" onclick="showSlide(8)"><span class="num">9</span> 👆 フォロー</button>
         <div class="caption-box">
             <h3>📝 キャプション</h3>
-            <textarea class="caption-text"
-                id="captionFull">デートにおすすめ鎌倉の穴場6選☕🍝
-
-「ここ知ってる？」って言いたくない？
-ガチで使える鎌倉のスポットまとめたよ。
-
-1. カフェ ヴィヴモン ディモンシュ
-⭐4.4（651件）💰¥1,000〜2,000
-ワッフルとプリンパフェが映えすぎ。
-11時すぐなら席取れる🤫
-
-2. 燕CAFE
-⭐4.4（319件）💰お手頃
-路地裏にあって探さないと見つからない。
-テレビでも紹介された隠れ家✨
-
-3. 古民家カフェ ユキノシタ
-⭐4.6（62件）💰¥1,000〜2,000
-口コミ62件しかない穴場。
-まだ誰もバズらせてない😳
-
-4. 古民家イタリアンかど屋
-⭐4.4（179件）💰¥2,000〜3,000
-古民家でパスタって最強じゃない？
-スタッフさんもめっちゃ良い人◎
-
-5. アルビコッカ鎌倉
-⭐4.5（322件）💰¥1,000〜2,000
-口コミ322件で安定。
-Googleで予約もできる👍
-
-──────
-
-ぶっちゃけユキノシタが1番穴場だけど、
-バズりすぎたら行けなくなるかも😭
-皆はどこが気になった？👇
-
-保存しとけば次の鎌倉デートで使えるよ📌
-
-#鎌倉 #鎌倉カフェ #鎌倉グルメ #鎌倉デート #隠れ家カフェ #古民家カフェ #穴場スポット #カフェ巡り #デートスポット #鎌倉旅行 #コスパ最強 #永久保存版 #旅行好きな人と繋がりたい #tiktok旅行 #国内旅行 #週末旅行</textarea>
+            <textarea class="caption-text" id="captionFull">保存して使ってね！</textarea>
             <button class="copy-btn" onclick="copyCaption()">📋 コピー</button>
         </div>
     </div>
@@ -490,65 +428,85 @@ Googleで予約もできる👍
     <script>
         const SPOTS = [
             {
-                name: 'カフェ ヴィヴモン\nディモンシュ',
-                shortName: 'ヴィヴモン ディモンシュ',
-                addr: '鎌倉市小町2丁目1-5',
-                price: '¥1,000〜¥2,000',
-                rating: '4.4', reviews: '651', category: 'カフェ',
-                merits: ['ワッフル&プリンパフェが映える', 'コーヒーが本格派', '小町通りでアクセス◎'],
-                demerit: '休日は混みやすい',
-                secret: '11時オープン直後が狙い目。テイクアウトもOK',
-                foodBg: 'collected_data/store_images/photo_dimanche.png',
-                cardBg: 'collected_data/store_images/card_dimanche.png',
+                name: "フルーツパーラー\nゴトー",
+                shortName: "フルーツパーラーゴトー",
+                price: "¥1,000〜¥2,000",
+                rating: 4.3,
+                reviews: 931,
+                category: "スイーツ",
+                merits: [
+                    "季節のパフェが絶品",
+                    "昔ながらの老舗感",
+                    "フルーツの鮮度が段違い"
+                ],
+                demerit: "行列必至",
+                secret: "平日14時以降が穴場の時間帯",
+                foodBg: "content_library/002_asakusa_gourmet/images/photo_spot1.png"
             },
             {
-                name: '燕CAFE',
-                shortName: '燕CAFE',
-                addr: '鎌倉市小町3丁目2-27',
-                price: 'お手頃',
-                rating: '4.4', reviews: '319', category: 'カフェ',
-                merits: ['古風な雰囲気がエモい', '探さないと見つからない隠れ家', 'テレビ紹介の実力派'],
-                demerit: '営業時間が短め',
-                secret: '路地裏の行き方を動画にすると保存率UP',
-                foodBg: 'collected_data/store_images/photo_tsubame.png',
-                cardBg: 'collected_data/store_images/card_tsubame.png',
+                name: "ペリカンカフェ",
+                shortName: "ペリカンカフェ",
+                price: "¥1,000〜¥2,000",
+                rating: 4.2,
+                reviews: 450,
+                category: "カフェ",
+                merits: [
+                    "創業77年のパン屋カフェ",
+                    "トーストが究極に美味い",
+                    "レトロな雰囲気"
+                ],
+                demerit: "メニューが少なめ",
+                secret: "パンは隣のパン屋で買えるけどカフェ限定メニューあり",
+                foodBg: "content_library/002_asakusa_gourmet/images/photo_spot2.png"
             },
             {
-                name: '古民家カフェ\nユキノシタ',
-                shortName: 'ユキノシタ',
-                addr: '鎌倉市雪ノ下1丁目13-13',
-                price: '¥1,000〜¥2,000',
-                rating: '4.6', reviews: '62', category: 'カフェ',
-                merits: ['古民家の雰囲気が最高', 'ブランチにも使える', '口コミ62件＝まだ穴場'],
-                demerit: '情報が少なめ',
-                secret: 'まだ誰もバズらせてない。第一発見者になれる',
-                foodBg: 'collected_data/store_images/photo_yukinoshita.png',
-                cardBg: 'collected_data/store_images/card_yukinoshita.png',
+                "name": "つくし",
+                "shortName": "つくし",
+                "category": "とんかつ",
+                "rating": 4.5,
+                "reviews": 200,
+                "price": "¥1,000〜¥2,000",
+                "merits": [
+                    "地元民が通うとんかつ屋",
+                    "コスパ最強ランチ",
+                    "観光客少なめの穴場"
+                ],
+                "demerit": "ランチタイムは並ぶ",
+                "secret": "実はメンチカツの方が人気。常連は必ず頼む",
+                "foodBg": "content_library/002_asakusa_gourmet/images/photo_spot3.png"
             },
             {
-                name: '古民家イタリアン\nかど屋',
-                shortName: 'かど屋',
-                addr: '鎌倉市雪ノ下3丁目6-26',
-                price: '¥2,000〜¥3,000',
-                rating: '4.4', reviews: '179', category: 'イタリアン',
-                merits: ['古民家で絶品パスタ', 'スタッフの対応が神', '八幡宮近くの穴場'],
-                demerit: '中心地からちょい歩く',
-                secret: '古民家×イタリアンはTikTok最強の組み合わせ',
-                foodBg: 'collected_data/store_images/photo_kadoya.png',
-                cardBg: 'collected_data/store_images/card_kadoya.png',
+                "name": "浅草メンチ",
+                "shortName": "浅草メンチ",
+                "category": "食べ歩き",
+                "rating": 4,
+                "reviews": 1200,
+                "price": "〜¥500",
+                "merits": [
+                    "テレビで話題の揚げたてメンチ",
+                    "食べ歩きの王道",
+                    "ワンコインで大満足"
+                ],
+                "demerit": "油っぽいと感じる人も",
+                "secret": "揚げたて30秒以内に食べるのが通の食べ方",
+                "foodBg": "content_library/002_asakusa_gourmet/images/photo_spot4.png"
             },
             {
-                name: 'アルビコッカ\n鎌倉',
-                shortName: 'アルビコッカ',
-                addr: '鎌倉市雪ノ下2丁目6-11',
-                price: '¥1,000〜¥2,000',
-                rating: '4.5', reviews: '322', category: 'イタリアン',
-                merits: ['カジュアルイタリアン', '古民家の落ち着いた空間', '口コミ322件の安定感'],
-                demerit: '予約なしだと待つかも',
-                secret: 'Googleで予約ボタンあり。清潔感も好評',
-                foodBg: 'collected_data/store_images/photo_albicoca.png',
-                cardBg: 'collected_data/store_images/card_albicoca.png',
-            },
+                "name": "珈琲天国",
+                "shortName": "珈琲天国",
+                "category": "カフェ",
+                "rating": 4.3,
+                "reviews": 500,
+                "price": "〜¥1,000",
+                "merits": [
+                    "ホットケーキが映えすぎ",
+                    "天国の焼印が可愛い",
+                    "昭和レトロな純喫茶"
+                ],
+                "demerit": "席数が少ない",
+                "secret": "ホットケーキは焼くのに15分。先にオーダーが命",
+                "foodBg": "content_library/002_asakusa_gourmet/images/photo_spot5.png"
+            }
         ];
 
         let currentSlide = 0;
@@ -557,66 +515,73 @@ Googleで予約もできる👍
             currentSlide = i;
             document.querySelectorAll('.slide-btn').forEach((b, j) => b.classList.toggle('active', j === i));
             const el = document.getElementById('slideContainer');
+
+            const n = SPOTS.length;
+
             if (i === 0) renderCover(el);
-            else if (i >= 1 && i <= 5) renderSpot(el, SPOTS[i - 1], i);
-            else if (i === 6) renderComparison(el);
-            else if (i === 7) renderSaveCTA(el);
-            else if (i === 8) renderFollowCTA(el);
+            else if (i >= 1 && i <= n) renderSpot(el, SPOTS[i - 1], i);
+            else if (i === n + 1) renderComparison(el);
+            else if (i === n + 2) renderSaveCTA(el);
+            else if (i === n + 3) renderFollowCTA(el);
         }
 
-        function starsHTML(rating) {
-            const full = Math.floor(parseFloat(rating));
-            const half = parseFloat(rating) % 1 >= 0.3;
-            return '★'.repeat(full) + (half ? '☆' : '');
+        // 数値から星（★）のHTMLを生成する関数
+        function renderStars(ratingStr) {
+            const num = parseFloat(ratingStr);
+            const fullStars = Math.floor(num);
+            const hasHalf = num % 1 >= 0.3; // 0.3以上なら半分の星（※今回はシンプルに★で表示）
+            let html = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < fullStars) html += '★';
+                else if (i === fullStars && hasHalf) html += '★'; // 半星の代替
+                else html += '☆'; // 空の星
+            }
+            return html;
         }
 
         function renderCover(el) {
             el.innerHTML = `
-            <img class="slide-bg" src="collected_data/store_images/photo_landmark.png">
+            <img class="slide-bg" src="content_library/002_asakusa_gourmet/images/photo_landmark.png">
             <div class="slide-overlay" style="background:linear-gradient(180deg, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.9) 100%);"></div>
             <div class="slide-content">
                 <div class="cover-content">
-                    <div class="cover-sub">📍 鎌倉エリア</div>
-                    <div class="cover-title-main">デートにおすすめ<br>鎌倉の穴場<span style="color:#25f4ee;">6選</span></div>
-                    <div class="cover-tag">☕ カフェ ＆ 🍝 イタリアン</div>
+                    <div class="cover-sub">📍 浅草エリア</div>
+                    <div class="cover-title-main">デートにおすすめ<br>浅草の穴場<span style="color:#25f4ee;">5選</span></div>
+                    <div class="cover-tag">✨ グルメ・食べ歩き</div>
                     <div class="cover-dots">
                         <div class="cover-dot active"></div>
-                        ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => '<div class="cover-dot"></div>').join('')}
+                        ${[1, 2, 3, 4, 5, 6, 7, 8].map(() => '<div class="cover-dot"></div>').join('')}
                     </div>
                 </div>
             </div>`;
         }
 
         function renderSpot(el, spot, idx) {
+            const formattedReviews = spot.reviews >= 1000 ? (spot.reviews / 1000).toFixed(1) + 'k' : spot.reviews;
+
             el.innerHTML = `
             <img class="slide-bg" src="${spot.foodBg}">
-            <div class="slide-overlay" style="background:linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.95) 75%);"></div>
+            <div class="slide-overlay" style="background:linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.95) 75%);"></div>
             
-            <!-- Store Name Top-Left -->
-            <div class="store-name-topleft">
+            <div class="store-name-topleft" style="top: 16px;">
                 <div class="store-num">${spot.category} #${idx}</div>
                 <div class="store-label">${spot.name.replace(/\n/g, '<br>')}</div>
             </div>
             
-            <!-- Floating Google Maps Card Top-Right -->
-            <div class="floating-card">
-                <img src="${spot.cardBg}" alt="${spot.shortName}">
-                <div class="floating-card-info">
-                    <div class="floating-card-name">${spot.shortName}</div>
-                    <div class="floating-card-rating">
-                        <span class="floating-card-stars">${starsHTML(spot.rating)}</span>
-                        <span class="floating-card-score">${spot.rating} (${spot.reviews})</span>
-                    </div>
-                    <div class="floating-card-price">${spot.price}</div>
+            <!-- NEW: Text-Based Rating Badge -->
+            <div class="rating-badge">
+                <div class="rating-badge-top">
+                    <div class="score">${spot.rating}</div>
+                    <div class="stars">${renderStars(spot.rating)}</div>
                 </div>
-                <div class="floating-card-badge">Google Maps</div>
+                <div class="reviews-text">${spot.source || 'Googleのクチコミ'} ${spot.reviews}件</div>
             </div>
             
             <!-- Bottom Info -->
             <div class="bottom-info">
                 <div class="bottom-price-row">
                     <span class="badge-price">💰 ${spot.price}</span>
-                    <span class="badge-reviews">💬 ${spot.reviews}件</span>
+                    <span class="badge-category">🍽️ ${spot.category}</span>
                 </div>
                 <div class="bottom-merits">
                     ${spot.merits.map(m => `<div><span class="m">✓</span> ${m}</div>`).join('')}
@@ -626,7 +591,6 @@ Googleで予約もできる👍
                     <div class="secret-label">🤫 裏情報</div>
                     <div class="secret-text">${spot.secret}</div>
                 </div>
-                <!-- 画面下部を少し空ける（TikTokのUIと被らないように） -->
                 <div style="height: 40px;"></div>
             </div>`;
         }
@@ -645,12 +609,10 @@ Googleで予約もできる👍
                         <td style="font-size: 10px; color: #fe2c55; border-bottom: 1px solid rgba(255,255,255,0.05);">${'★'.repeat(Math.round(parseFloat(s.rating)))}</td>
                     </tr>`).join('')}
                 </table>
-                <div style="text-align:center;margin-top:20px;font-size:11px;color:rgba(255,255,255,0.5);">※Google Maps調査時点</div>
+                <div style="text-align:center;margin-top:20px;font-size:11px;color:rgba(255,255,255,0.5);">※独自調査時点</div>
                 <div style="height: 60px;"></div>
             </div>`;
         }
-
-
 
         function renderSaveCTA(el) {
             el.innerHTML = `
@@ -670,9 +632,6 @@ Googleで予約もできる👍
                 <div style="font-size:14px;color:#25f4ee;font-weight:700;margin-bottom:20px;">👆 プロフィールから 👆</div>
                 <div style="width:70px;height:70px;background:linear-gradient(135deg,#25f4ee,#fe2c55);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:12px;">🔗</div>
                 <div style="font-size:10px;color:rgba(255,255,255,0.4);">フォローで穴場情報をGET 🔔</div>
-                <div style="margin-top:24px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
-                    ${['#鎌倉', '#穴場カフェ', '#デートスポット'].map(t => `<span style="background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:16px;font-size:9px;color:#25f4ee;">${t}</span>`).join('')}
-                </div>
             </div>`;
         }
 

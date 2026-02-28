@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Slide - Romantic Gold</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #06081a;
+            color: #fff;
+            font-family: 'Noto Sans JP', sans-serif;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .controls {
+            width: 200px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .controls h1 {
+            font-size: 1rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #C8A96E, #F5D898);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .slide-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            color: #888;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .slide-btn.active {
+            background: rgba(200, 169, 110, 0.15);
+            border-color: rgba(200, 169, 110, 0.4);
+            color: #C8A96E;
+        }
+
+        .preview-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* ======================== SLIDE ======================== */
+        .slide {
+            width: 432px;
+            height: 540px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(200, 169, 110, 0.15);
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+        }
+
+        .slide-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Gold corner accent */
+        .gold-corner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(225deg, rgba(200, 169, 110, 0.5) 0%, transparent 60%);
+            z-index: 5;
+        }
+
+        /* ======================== FLOATING CARD (right) ======================== */
+        .floating-card {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 20;
+            width: 110px;
+            background: rgba(6, 8, 26, 0.85);
+            border: 1px solid rgba(200, 169, 110, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(200, 169, 110, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        .floating-card img {
+            width: 100%;
+            height: 35px;
+            object-fit: cover;
+            object-position: bottom;
+            display: block;
+            opacity: 0.85;
+        }
+
+        .floating-card-info {
+            padding: 5px 7px 6px;
+        }
+
+        .floating-card-name {
+            font-size: 6.5px;
+            font-weight: 800;
+            color: #F5D898;
+            line-height: 1.2;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .floating-card-rating {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .floating-card-stars {
+            color: #C8A96E;
+            font-size: 8px;
+        }
+
+        .floating-card-score {
+            font-size: 7px;
+            color: #aaa;
+            font-weight: 600;
+        }
+
+        .floating-card-price {
+            font-size: 6.5px;
+            color: #C8A96E;
+            margin-top: 1px;
+        }
+
+        .floating-card-badge {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            background: #C8A96E;
+            color: #06081a;
+            font-size: 4px;
+            font-weight: 900;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* ======================== STORE NAME (top-left) ======================== */
+        .store-name-topleft {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 15;
+        }
+
+        .store-num {
+            font-size: 9px;
+            color: #C8A96E;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .store-label {
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+            max-width: 180px;
+        }
+
+        /* ======================== BOTTOM INFO ======================== */
+        .bottom-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 14px 14px 16px;
+            background: linear-gradient(0deg, rgba(6, 8, 26, 0.97) 0%, rgba(6, 8, 26, 0.85) 60%, transparent 100%);
+            z-index: 10;
+        }
+
+        .bottom-price-row {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .badge-price {
+            background: rgba(200, 169, 110, 0.2);
+            border: 1px solid rgba(200, 169, 110, 0.4);
+            color: #C8A96E;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .badge-reviews {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ccc;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .bottom-merits {
+            margin-bottom: 8px;
+        }
+
+        .bottom-merits .m {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.45;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .bottom-merits .m::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #C8A96E;
+            font-size: 9px;
+            top: 1px;
+        }
+
+        .bottom-merits .d {
+            font-size: 9.5px;
+            color: #f87171;
+            line-height: 1.4;
+            margin-top: 3px;
+        }
+
+        .bottom-secret {
+            background: linear-gradient(90deg, rgba(200, 169, 110, 0.15), transparent);
+            border-left: 2px solid #C8A96E;
+            padding: 4px 8px;
+            font-size: 9.5px;
+            color: #F5D898;
+            line-height: 1.4;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* ======================== COVER SLIDE ======================== */
+        .cover-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px 20px 24px;
+        }
+
+        .cover-sub {
+            font-size: 13px;
+            color: rgba(200, 169, 110, 0.9);
+            margin-bottom: 6px;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .cover-title-main {
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 1.2;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9);
+            margin-bottom: 10px;
+        }
+
+        .cover-divider {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #C8A96E, transparent);
+            margin-bottom: 10px;
+        }
+
+        .cover-tag {
+            font-size: 13px;
+            color: rgba(245, 216, 152, 0.85);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        /* ======================== COMPARISON TABLE ======================== */
+        .comp-container {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .comp-title {
+            font-size: 16px;
+            font-weight: 900;
+            color: #F5D898;
+            margin-bottom: 14px;
+            text-align: center;
+            letter-spacing: 0.05em;
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+        }
+
+        .comp-table th {
+            background: rgba(200, 169, 110, 0.2);
+            border: 1px solid rgba(200, 169, 110, 0.3);
+            padding: 7px 4px;
+            font-size: 8px;
+            font-weight: 700;
+            text-align: center;
+            color: #C8A96E;
+        }
+
+        .comp-table td {
+            padding: 7px 4px;
+            font-size: 8px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: #ddd;
+        }
+
+        .comp-table tr:nth-child(even) td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* ======================== CTA SLIDES ======================== */
+        .cta-container {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .cta-icon {
+            font-size: 52px;
+            margin-bottom: 16px;
+        }
+
+        .cta-main {
+            font-size: 26px;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .cta-sub {
+            font-size: 12px;
+            color: rgba(245, 216, 152, 0.85);
+            line-height: 1.6;
+        }
+
+        .cta-badge {
+            margin-top: 18px;
+            padding: 8px 24px;
+            background: linear-gradient(135deg, #C8A96E, #8B6914);
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <h1>✨ Romantic Gold</h1>
+        <button class="slide-btn active" onclick="showSlide(0)"><span>1</span> 表紙</button>
+        <button class="slide-btn" onclick="showSlide(1)"><span>2</span> スポット1</button>
+        <button class="slide-btn" onclick="showSlide(2)"><span>3</span> スポット2</button>
+        <button class="slide-btn" onclick="showSlide(3)"><span>4</span> スポット3</button>
+        <button class="slide-btn" onclick="showSlide(4)"><span>5</span> スポット4</button>
+        <button class="slide-btn" onclick="showSlide(5)"><span>6</span> スポット5</button>
+        <button class="slide-btn" onclick="showSlide(6)"><span>7</span> 比較表</button>
+        <button class="slide-btn" onclick="showSlide(7)"><span>8</span> 保存CTA</button>
+        <button class="slide-btn" onclick="showSlide(8)"><span>9</span> フォロー</button>
+    </div>
+
+    <div class="preview-area">
+        <div class="slide" id="slideContainer"></div>
+    </div>
+
+    <script>
+        const SPOTS = [
+            {
+                name: '政寿司\n本店',
+                shortName: '政寿司',
+                price: '¥5,000〜¥10,000',
+                rating: '4.6', reviews: '1800', category: '寿司',
+                merits: ['北海道産ネタが圧倒的に新鮮', 'うにとイクラの輝きが別格', '老舗の格式ある雰囲気'],
+                demerit: '予約必須・価格高め',
+                secret: 'カウンター席でご主人と会話すると限定ネタを出してくれることも',
+                foodBg: 'collected_data/store_images/photo_landmark.png',
+                cardBg: 'collected_data/store_images/photo_landmark.png',
+            },
+        ];
+
+        let currentSlide = 0;
+
+        function showSlide(i) {
+            currentSlide = i;
+            document.querySelectorAll('.slide-btn').forEach((b, j) => b.classList.toggle('active', j === i));
+            const el = document.getElementById('slideContainer');
+            if (i === 0) renderCover(el);
+            else if (i >= 1 && i <= SPOTS.length) renderSpot(el, SPOTS[i - 1], i);
+            else if (i === SPOTS.length + 1) renderComparison(el);
+            else if (i === SPOTS.length + 2) renderSaveCTA(el);
+            else if (i === SPOTS.length + 3) renderFollowCTA(el);
+        }
+
+        function starsHTML(rating) {
+            const full = Math.floor(parseFloat(rating));
+            const half = parseFloat(rating) % 1 >= 0.3;
+            return '★'.repeat(full) + (half ? '☆' : '');
+        }
+
+        function renderCover(el) {
+            el.innerHTML = `
+            <img class="slide-bg" src="collected_data/store_images/photo_landmark.png">
+            <div class="slide-overlay" style="background:linear-gradient(180deg, rgba(6,8,26,0.4) 0%, rgba(6,8,26,0.3) 30%, rgba(6,8,26,0.92) 100%);"></div>
+            <div class="gold-corner"></div>
+            <div class="slide-content">
+                <div class="cover-content">
+                    <div class="cover-sub">📍 小樽エリア</div>
+                    <div class="cover-title-main">絶対行くべき<br>小樽の穴場<span style="color:#C8A96E;">5選</span></div>
+                    <div class="cover-divider"></div>
+                    <div class="cover-tag">✦ 海鮮・運河・スイーツ</div>
+                </div>
+            </div>`;
+        }
+
+        function renderSpot(el, spot, idx) {
+            el.innerHTML = `
+            <img class="slide-bg" src="${spot.foodBg}">
+            <div class="slide-overlay" style="background:linear-gradient(180deg, rgba(6,8,26,0.65) 0%, rgba(6,8,26,0.3) 30%, rgba(6,8,26,0.96) 75%);"></div>
+            <div class="gold-corner"></div>
+
+            <div class="store-name-topleft">
+                <div class="store-num">${spot.category} #${idx}</div>
+                <div class="store-label">${spot.name.replace(/\n/g, '<br>')}</div>
+            </div>
+
+            <div class="floating-card">
+                <img src="${spot.cardBg}" alt="${spot.shortName}">
+                <div class="floating-card-info">
+                    <div class="floating-card-name">${spot.shortName}</div>
+                    <div class="floating-card-rating">
+                        <span class="floating-card-stars">${starsHTML(spot.rating)}</span>
+                        <span class="floating-card-score">${spot.rating} (${spot.reviews})</span>
+                    </div>
+                    <div class="floating-card-price">${spot.price}</div>
+                </div>
+                <div class="floating-card-badge">${spot.source === '食べログ' ? '食べログ' : 'Google Maps'}</div>
+            </div>
+
+            <div class="bottom-info">
+                <div class="bottom-price-row">
+                    <span class="badge-price">💰 ${spot.price}</span>
+                    <span class="badge-reviews">💬 ${spot.reviews}件</span>
+                </div>
+                <div class="bottom-merits">
+                    ${spot.merits.map(m => `<div class="m">${m}</div>`).join('')}
+                    <div class="d">⚠ ${spot.demerit}</div>
+                </div>
+                <div class="bottom-secret">🔑 ${spot.secret}</div>
+            </div>`;
+        }
+
+        function renderComparison(el) {
+            el.innerHTML = `
+            <div class="slide-overlay" style="background:radial-gradient(ellipse at center, #0d1635 0%, #06081a 100%);"></div>
+            <div class="comp-container">
+                <div class="comp-title">✦ 小樽スポット 完全比較 ✦</div>
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>スポット</th>
+                            <th>予算</th>
+                            <th>評価</th>
+                            <th>おすすめ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${SPOTS.map(s => `<tr>
+                            <td>${s.shortName}</td>
+                            <td>${s.price}</td>
+                            <td>⭐${s.rating}</td>
+                            <td>${s.merits[0].substring(0, 12)}...</td>
+                        </tr>`).join('')}
+                    </tbody>
+                </table>
+            </div>`;
+        }
+
+        function renderSaveCTA(el) {
+            el.innerHTML = `
+            <div class="slide-overlay" style="background:radial-gradient(ellipse at center, #1a1200 0%, #06081a 100%);"></div>
+            <div class="cta-container">
+                <div class="cta-icon">📌</div>
+                <div class="cta-main">このスライドを<br><span style="color:#C8A96E;">今すぐ保存</span></div>
+                <div class="cta-sub">旅行前に見返したい人は<br>右下の保存ボタンをタップ</div>
+                <div class="cta-badge">✦ 保存して損なし</div>
+            </div>`;
+        }
+
+        function renderFollowCTA(el) {
+            el.innerHTML = `
+            <div class="slide-overlay" style="background:radial-gradient(ellipse at center, #0a1020 0%, #06081a 100%);"></div>
+            <div class="cta-container">
+                <div class="cta-icon">🌟</div>
+                <div class="cta-main">もっと見たいなら<br><span style="color:#C8A96E;">フォロー</span>してね</div>
+                <div class="cta-sub">北海道・全国の穴場スポットを<br>毎日発信中</div>
+                <div class="cta-badge">✦ フォローして旅を豊かに</div>
+            </div>`;
+        }
+
+        showSlide(0);
+    </script>
+</body>
+
+</html>

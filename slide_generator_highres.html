@@ -609,7 +609,7 @@ Googleで予約もできる👍
                     </div>
                     <div class="floating-card-price">${spot.price}</div>
                 </div>
-                <div class="floating-card-badge">Google Maps</div>
+                <div class="floating-card-badge">${spot.source === '食べログ' ? '食べログ' : 'Google Maps'}</div>
             </div>
             
             <!-- Bottom Info -->
@@ -645,7 +645,7 @@ Googleで予約もできる👍
                         <td style="font-size: 25px; color: #fe2c55; border-bottom: 2.5px solid rgba(255,255,255,0.05);">${'★'.repeat(Math.round(parseFloat(s.rating)))}</td>
                     </tr>`).join('')}
                 </table>
-                <div style="text-align:center;margin-top:50px;font-size:27.5px;color:rgba(255,255,255,0.5);">※Google Maps調査時点</div>
+                <div style="text-align:center;margin-top:50px;font-size:27.5px;color:rgba(255,255,255,0.5);">※調査時点のデータ</div>
                 <div style="height: 150px;"></div>
             </div>`;
         }
